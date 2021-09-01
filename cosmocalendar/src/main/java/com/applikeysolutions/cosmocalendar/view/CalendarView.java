@@ -18,6 +18,7 @@ import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SimpleItemAnimator;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -683,7 +684,7 @@ public class CalendarView extends RelativeLayout implements OnDaySelectedListene
     private void recreateInitialMonth(boolean hasLimit) {
         monthAdapter.getData().clear();
         monthAdapter.getData().addAll(CalendarUtils.createInitialMonths(settingsManager, hasLimit));
-        //lastVisibleMonthPosition = settingsManager.getInitialPosition();
+        lastVisibleMonthPosition = settingsManager.getInitialPosition();
     }
 
     @Override
@@ -698,6 +699,8 @@ public class CalendarView extends RelativeLayout implements OnDaySelectedListene
         Calendar selectedCalendar = selectedDays.get(0).getCalendar();
         for (Month month : monthAdapter.getData()) {
             if (month.getFirstDay().getCalendar().compareTo(selectedCalendar) > 0) {
+                Log.e("onDaySelected: Month", String.valueOf(month.getFirstDay().getCalendar()));
+                Log.e("onDaySelected: calendar", String.valueOf(selectedCalendar));
                 lastVisibleMonthPosition = index - 1;
                 if (isFirstSelect) {
                     rvMonths.scrollToPosition(lastVisibleMonthPosition);
