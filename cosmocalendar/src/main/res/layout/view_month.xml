@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_month_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:padding="6dp"
+        android:textSize="@dimen/text_medium"
+        tools:text="April 2015" />
+
+    <View
+        android:id="@+id/month_header_border"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/default_border_color" />
+
+    <com.applikeysolutions.cosmocalendar.view.MonthView
+        android:id="@+id/month_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
