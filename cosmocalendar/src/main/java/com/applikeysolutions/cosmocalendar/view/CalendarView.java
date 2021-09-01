@@ -698,10 +698,13 @@ public class CalendarView extends RelativeLayout implements OnDaySelectedListene
         int index = 0;
         Calendar selectedCalendar = selectedDays.get(0).getCalendar();
         for (Month month : monthAdapter.getData()) {
-            if (isSameDay(month.getFirstDay().getCalendar(), selectedCalendar)) {
-                Log.e("onDaySelected: Month", String.valueOf(month.getFirstDay().getCalendar().getTime()));
-                Log.e("onDaySelected: calendar", String.valueOf(selectedCalendar.getTime()));
-                lastVisibleMonthPosition = index - 1;
+            if (month.getFirstDay().getCalendar().compareTo(selectedCalendar) > 0) {
+
+                if (isSameDay(month.getFirstDay().getCalendar(), selectedCalendar)) {
+                    lastVisibleMonthPosition = index;
+                } else {
+                    lastVisibleMonthPosition = index - 1;
+                }
                 if (isFirstSelect) {
                     rvMonths.scrollToPosition(lastVisibleMonthPosition);
                     isFirstSelect = false;
