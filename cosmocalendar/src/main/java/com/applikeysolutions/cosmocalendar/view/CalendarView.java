@@ -683,7 +683,7 @@ public class CalendarView extends RelativeLayout implements OnDaySelectedListene
     private void recreateInitialMonth(boolean hasLimit) {
         monthAdapter.getData().clear();
         monthAdapter.getData().addAll(CalendarUtils.createInitialMonths(settingsManager, hasLimit));
-        lastVisibleMonthPosition = settingsManager.getInitialPosition();
+        //lastVisibleMonthPosition = settingsManager.getInitialPosition();
     }
 
     @Override
@@ -698,7 +698,7 @@ public class CalendarView extends RelativeLayout implements OnDaySelectedListene
         Calendar selectedCalendar = selectedDays.get(0).getCalendar();
         for (Month month : monthAdapter.getData()) {
             if (month.getFirstDay().getCalendar().compareTo(selectedCalendar) > 0) {
-                lastVisibleMonthPosition = index;
+                lastVisibleMonthPosition = index - 1;
                 if (isFirstSelect) {
                     rvMonths.scrollToPosition(lastVisibleMonthPosition);
                     isFirstSelect = false;
