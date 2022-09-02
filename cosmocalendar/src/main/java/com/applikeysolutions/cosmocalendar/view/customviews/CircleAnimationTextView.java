@@ -84,7 +84,7 @@ public class CircleAnimationTextView extends AppCompatTextView {
                 case START_RANGE_DAY:
                 case END_RANGE_DAY:
                     drawRectangle(canvas);
-                    drawCircleUnder(canvas);
+                    // drawCircleUnder(canvas);
                     drawCircle(canvas);
                     break;
 
